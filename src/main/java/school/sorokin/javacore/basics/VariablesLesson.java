@@ -7,7 +7,7 @@ public class VariablesLesson {
         int citizens = 1542365;
         long time = System.currentTimeMillis();
         float tau = 6.283_185_307_179_586f;
-        double PI = 3.14159265358979;
+        double pi = 3.14159265358979;
         boolean flag = true;
         char gender = 'M';
 
@@ -16,7 +16,7 @@ public class VariablesLesson {
         System.out.println("Citizens: " + citizens);
         System.out.println("Time: " + time);
         System.out.println("TAU: " + tau);
-        System.out.println("PI: " + PI);
+        System.out.println("PI: " + pi);
         System.out.println("Is true? " + flag);
         System.out.println("Gender: " + gender);
 
