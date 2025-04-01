@@ -2,6 +2,7 @@ package school.sorokin.javacore.basics;
 
 public class VariablesLesson {
     public static void main(String[] args) {
+        //Created and initialized variables
         byte temperature = 25;
         short schoolMembers = 1582;
         int citizens = 1542365;
@@ -11,6 +12,7 @@ public class VariablesLesson {
         boolean flag = true;
         char gender = 'M';
 
+        //Printed variables into console
         System.out.println("Temperature: " + temperature);
         System.out.println("School members: " + schoolMembers);
         System.out.println("Citizens: " + citizens);
@@ -20,12 +22,14 @@ public class VariablesLesson {
         System.out.println("Is true? " + flag);
         System.out.println("Gender: " + gender);
 
+        //Casting long to int
         int casting = (int) time;
         System.out.println("Casting: " + casting);
 
-        char a = 'A';
+        //incremented 'char' variables by 1
+        char letter = 'A';
         for (int i = 0; i < 5; i++) {
-            System.out.println(a + i);
+            System.out.println(letter + i);
         }
     }
 }
