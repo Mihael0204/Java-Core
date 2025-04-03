@@ -15,12 +15,15 @@ public class BasicsHomework {
         int contactCount = 0;
         int inputNumber;
 
+        //Считываем воод с клавиатуры и проверяем его
         while ((inputNumber = Integer.parseInt(reader.readLine())) != 5) {
             if (inputNumber < 1 || inputNumber > 5) {
                 System.out.println("Некоректно введенные данные.");
                 contextMenu();
             }
+            //Используем switch-case для выбора нужной логики
             switch (inputNumber) {
+                //Добавление имен и номеров телефонов в записную книгу
                 case 1:
                     if (emptySpaceChecker(names)) {
                         System.out.print("Имя: ");
@@ -35,6 +38,7 @@ public class BasicsHomework {
                     }
                     break;
                 case 2:
+                    //Вывод данных записной книги на экран
                     for (int i = 0; i < names.length; i++) {
                         if (names[i] != null) {
                             String result = i + 1 + ". " + names[i] + " - " + phoneNumbers[i];
@@ -49,6 +53,7 @@ public class BasicsHomework {
                     contextMenu();
                     break;
                 case 3:
+                    //Поиск номера телефона по имени
                     System.out.println("Имя для поиска: ");
                     String nameToSearch = reader.readLine();
                     for (int i = 0; i < names.length; i++) {
@@ -63,12 +68,14 @@ public class BasicsHomework {
                         break;
                     }
                     break;
+                    //Удаление номера имени и номера телефона из массивов по имени
                 case 4:
                     System.out.println("Имя для удаления: ");
                     String nameToDelete = reader.readLine();
 
                     int indexToDelete = -1;
 
+                    //Находим индекс удаляемого элемента
                     for (int i = 0; i < names.length; i++) {
                         if (names[i] != null && names[i].equals(nameToDelete)) {
                             indexToDelete = i;
@@ -76,12 +83,14 @@ public class BasicsHomework {
                         }
                     }
 
+                    //Если элемент найден, выполняем удаление с сдвигом
                     if (indexToDelete != -1) {
                         for (int i = indexToDelete; i < names.length - 1; i++) {
                             names[i] = names[i + 1];
                             phoneNumbers[i] = phoneNumbers[i + 1];
                         }
 
+                        //Заполняем последние элементы пустыми значениями
                         names[names.length - 1] = null;
                         phoneNumbers[phoneNumbers.length - 1] = null;
                         contactCount--;
@@ -98,6 +107,7 @@ public class BasicsHomework {
 
     }
 
+    //Проверка на наличие пустого места в массиве
     private static boolean emptySpaceChecker(String[] input) {
         for (String item : input) {
             if (item == null) {
@@ -107,6 +117,7 @@ public class BasicsHomework {
         return false;
     }
 
+    //Вынесение часто используемого контекстного меню в отдельный метод
     private static void contextMenu() {
         System.out.println("1. Добавить контакт");
         System.out.println("2. Просмотреть контакты");
