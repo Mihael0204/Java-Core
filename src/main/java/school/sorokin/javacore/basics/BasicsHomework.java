@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 
 public class BasicsHomework {
     public static void main(String[] args) throws IOException {
-        String[] names = new String[100];
-        String[] phoneNumbers = new String[100];
+        String[] names = new String[2];
+        String[] phoneNumbers = new String[2];
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         contextMenu();
@@ -17,20 +17,22 @@ public class BasicsHomework {
 
         while ((inputNumber = Integer.parseInt(reader.readLine())) != 5) {
             if (inputNumber < 1 || inputNumber > 5) {
-                System.out.println("Пожалуйста, введите число от 1 до 5!");
+                System.out.println("Некоректно введенные данные.");
                 contextMenu();
             }
             switch (inputNumber) {
                 case 1:
                     if (emptySpaceChecker(names)) {
-                        System.out.println("Введите имя: ");
+                        System.out.print("Имя: ");
                         names[contactCount] = reader.readLine();
-                        System.out.println("Введите номер телефона: ");
+                        System.out.print("Телефон: ");
                         phoneNumbers[contactCount] = reader.readLine();
                         contactCount++;
                         contextMenu();
                     } else {
-                        System.out.println("Места в записной книге нет.");}
+                        System.out.println("Места в записной книге нет.");
+                        contextMenu();
+                    }
                     break;
                 case 2:
                     for (int i = 0; i < names.length; i++) {
@@ -38,27 +40,31 @@ public class BasicsHomework {
                             String result = i + 1 + ". " + names[i] + " - " + phoneNumbers[i];
                             System.out.println(result);
                         }
+                        if (names[0] == null) {
+                            System.out.println("Записная книга пуста.");
+                            break;
+                        }
                     }
                     System.out.println(" ");
                     contextMenu();
                     break;
                 case 3:
-                    System.out.println("Введите имя контакта: ");
+                    System.out.println("Имя для поиска: ");
                     String nameToSearch = reader.readLine();
                     for (int i = 0; i < names.length; i++) {
                         if (names[i] != null && !names[i].equals(nameToSearch)) {
                             continue;
-                        } else if (names[i] != null && names[i].equals(nameToSearch)) {
-                            System.out.println("Номер телефона контакта: " + phoneNumbers[i]);
+                        } else if (names[i] != null) {
+                            System.out.println("Телефон " + names[i] + " " + phoneNumbers[i]);
                         } else {
-                            System.out.println("Такого контакта не существует.");
+                            System.out.println("Контакт с именем " + nameToSearch + " не найден.");
                         }
                         contextMenu();
                         break;
                     }
                     break;
                 case 4:
-                    System.out.println("Введите имя контакта: ");
+                    System.out.println("Имя для удаления: ");
                     String nameToDelete = reader.readLine();
 
                     int indexToDelete = -1;
@@ -81,6 +87,9 @@ public class BasicsHomework {
                         contactCount--;
                         System.out.println(" ");
                         System.out.println("Контакт удален!");
+                        contextMenu();
+                    } else {
+                        System.out.println("Такого контакта не существует.");
                         contextMenu();
                     }
                 break;
