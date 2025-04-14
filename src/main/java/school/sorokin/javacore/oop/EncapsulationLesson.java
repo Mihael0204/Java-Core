@@ -5,8 +5,10 @@ public class EncapsulationLesson {
         NewCar newCar = new NewCar();
         newCar.setBrand("Tesla");
         newCar.setModel("Model S");
-        newCar.setYear(2026);
-        System.out.println(newCar);
+        newCar.setYear(2025);
+        System.out.println(newCar.getBrand());
+        System.out.println(newCar.getModel());
+        System.out.println(newCar.getYear());
     }
 }
 
